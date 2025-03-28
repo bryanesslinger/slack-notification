@@ -1,0 +1,28 @@
+{
+  "name": "slack-notification",
+  "version": "1.0.0",
+  "description": "AWS Lambda function to send SNS messages to Slack",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "deploy": "serverless deploy"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "slack",
+    "sns"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/webhook": "^7.0.1",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "serverless": "^3.38.0",
+    "serverless-dotenv-plugin": "^6.0.0"
+  }
+} 

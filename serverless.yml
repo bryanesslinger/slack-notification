@@ -1,0 +1,27 @@
+service: slack-notification
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  environment:
+    SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+    SNS_TOPIC_ARN: arn:aws:sns:us-east-1:${aws:accountId}:ALERT_NOTIFICATIONS
+
+functions:
+  sendToSlack:
+    handler: handler.sendToSlack
+    events:
+      - sns:
+          arn: arn:aws:sns:us-east-1:${aws:accountId}:ALERT_NOTIFICATIONS
+          topicName: ALERT_NOTIFICATIONS
+
+plugins:
+  - serverless-dotenv-plugin
+
+custom:
+  dotenv:
+    path: ./.env
+    include:
+      - SLACK_WEBHOOK_URL
+      - SNS_TOPIC_ARN 
